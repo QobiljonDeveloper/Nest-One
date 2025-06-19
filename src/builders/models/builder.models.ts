@@ -12,7 +12,7 @@ interface IBuilderCreationAttr {
   full_name: string;
   birth_day: Date;
   salary: number;
-  company_id: number;
+  companyId: number;
 }
 
 @Table({ tableName: "builders", timestamps: false })
@@ -43,7 +43,7 @@ export class Builder extends Model<Builder, IBuilderCreationAttr> {
     type: DataType.INTEGER,
     onDelete: "CASCADE",
   })
-  company_id: number;
+  companyId: number;
 
   @BelongsTo(() => Company)
   company: Company;
