@@ -11,6 +11,12 @@ import { DriverModule } from "./driver/driver.module";
 import { Driver } from "./driver/models/driver.model";
 import { MachineDriverModule } from "./machine_driver/machine_driver.module";
 import { MachineDriver } from "./machine_driver/models/machine_driver.model";
+import { RolesModule } from "./roles/roles.module";
+import { Role } from "./roles/models/role.model";
+import { UsersModule } from "./users/users.module";
+import { User } from "./users/models/user.model";
+import { UserRole } from "./users/models/user-role.model";
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -25,7 +31,16 @@ import { MachineDriver } from "./machine_driver/models/machine_driver.model";
       username: process.env.PG_USER,
       password: process.env.PG_PASSWORD,
       database: process.env.PG_DB,
-      models: [Company, Builder, Machine, Driver, MachineDriver],
+      models: [
+        Company,
+        Builder,
+        Machine,
+        Driver,
+        MachineDriver,
+        Role,
+        User,
+        UserRole,
+      ],
       autoLoadModels: true,
       logging: false,
       sync: { alter: true },
@@ -35,6 +50,9 @@ import { MachineDriver } from "./machine_driver/models/machine_driver.model";
     MachineModule,
     DriverModule,
     MachineDriverModule,
+    RolesModule,
+    UsersModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
