@@ -1,4 +1,10 @@
-import { BelongsToMany, Column, DataType, Model, Table } from "sequelize-typescript";
+import {
+  BelongsToMany,
+  Column,
+  DataType,
+  Model,
+  Table,
+} from "sequelize-typescript";
 import { UserRole } from "./user-role.model";
 import { Role } from "../../roles/models/role.model";
 
@@ -30,12 +36,16 @@ export class User extends Model<User, IUserCreationAttr> {
   declare email: string;
 
   @Column({
+    type: DataType.TEXT,
+  })
+  declare password: string;
+
+  @Column({
     type: DataType.BOOLEAN,
     defaultValue: false,
   })
   declare is_active: boolean;
 
-
-  @BelongsToMany(()=> Role, ()=>UserRole)
-  roles:Role[]
+  @BelongsToMany(() => Role, () => UserRole)
+  roles: Role[];
 }
