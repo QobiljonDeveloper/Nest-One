@@ -10,7 +10,6 @@ export class MachineDriverService {
     @InjectModel(MachineDriver) private machineDriverModel: typeof MachineDriver
   ) {}
   create(createMachineDriverDto: CreateMachineDriverDto) {
-    // tekshirish
     return this.machineDriverModel.create(createMachineDriverDto);
   }
 

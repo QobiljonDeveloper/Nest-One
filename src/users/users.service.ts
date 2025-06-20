@@ -47,8 +47,8 @@ export class UsersService {
     return `This action returns a #${id} user`;
   }
 
-  getUserByEmail(email: string) {
-    return this.userModel.findOne({
+  async getUserByEmail(email: string) {
+    const user = await this.userModel.findOne({
       where: { email },
       include: {
         model: Role,
@@ -56,6 +56,7 @@ export class UsersService {
         through: { attributes: [] },
       },
     });
+    return user?.dataValues;
   }
   update(id: number, updateUserDto: UpdateUserDto) {
     return `This action updates a #${id} user`;
