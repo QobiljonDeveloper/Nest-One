@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  ParseIntPipe,
 } from "@nestjs/common";
 import { RolesService } from "./roles.service";
 import { CreateRoleDto } from "./dto/create-role.dto";
@@ -26,8 +27,8 @@ export class RolesController {
   }
 
   @Get(":id")
-  findOne(@Param("id") id: string) {
-    return this.rolesService.findOne(+id);
+  findOne(@Param("id", ParseIntPipe) id: number) {
+    return this.rolesService.findOne(id);
   }
 
   @Get("value/:value")
