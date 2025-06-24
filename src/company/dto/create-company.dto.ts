@@ -1,3 +1,4 @@
+import { Type } from "class-transformer";
 import { IsNotEmpty, IsString } from "class-validator";
 
 export class CreateCompanyDto {
@@ -7,6 +8,7 @@ export class CreateCompanyDto {
 
   @IsNotEmpty()
   @IsString()
+  @Type(() => Number)
   phone: string;
 
   @IsNotEmpty()
