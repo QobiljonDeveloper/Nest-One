@@ -47,7 +47,7 @@ export class UsersService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} user`;
+    return this.userModel.findByPk(id, { attributes: ["id", "name", "email"] });
   }
 
   async getUserByEmail(email: string) {

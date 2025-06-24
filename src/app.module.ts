@@ -16,10 +16,16 @@ import { Role } from "./roles/models/role.model";
 import { UsersModule } from "./users/users.module";
 import { User } from "./users/models/user.model";
 import { UserRole } from "./users/models/user-role.model";
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from "./auth/auth.module";
+import { FilesModule } from "./files/files.module";
+import { ServeStaticModule } from "@nestjs/serve-static";
+import { join } from "path";
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, "..", "static"),
+    }),
     ConfigModule.forRoot({
       envFilePath: ".env",
       isGlobal: true,
@@ -53,6 +59,7 @@ import { AuthModule } from './auth/auth.module';
     RolesModule,
     UsersModule,
     AuthModule,
+    FilesModule,
   ],
   controllers: [],
   providers: [],

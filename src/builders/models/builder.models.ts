@@ -13,6 +13,7 @@ interface IBuilderCreationAttr {
   birth_day: Date;
   salary: number;
   companyId: number;
+  image?: string;
 }
 
 @Table({ tableName: "builders", timestamps: false })
@@ -37,6 +38,10 @@ export class Builder extends Model<Builder, IBuilderCreationAttr> {
     type: DataType.DECIMAL(15, 2),
   })
   declare salary: number;
+  @Column({
+    type: DataType.TEXT,
+  })
+  declare image: string;
 
   @ForeignKey(() => Company)
   @Column({

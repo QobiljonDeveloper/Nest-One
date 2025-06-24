@@ -5,15 +5,17 @@ import { InjectModel } from "@nestjs/sequelize";
 import { Builder } from "./models/builder.models";
 import { Company } from "../company/models/company.model";
 import { CompanyService } from "../company/company.service";
+import { FilesService } from "../files/files.service";
 
 @Injectable()
 export class BuildersService {
   constructor(
     @InjectModel(Builder) private readonly builderModel: typeof Builder,
-    @InjectModel(Company) private readonly companyModel: typeof Company, ///----> 1 - usul
-    private readonly companyService: CompanyService
+    @InjectModel(Company) private readonly companyModel: typeof Company, //----> 1 - usul
+    private readonly companyService: CompanyService,
+    private readonly fileService: FilesService
   ) {}
-  async create(createBuilderDto: CreateBuilderDto) {
+  async create(createBuilderDto: CreateBuilderDto, image: any) {
     const { companyId } = createBuilderDto;
 
     // const company = await this.companyModel.findByPk(companyId); ----> 1 - usul
@@ -23,7 +25,8 @@ export class BuildersService {
       throw new BadRequestException("Bunday kompaniya mavjud emas");
     }
 
-    return this.builderModel.create(createBuilderDto);
+    const fileName = await this.fileService.saveFile(image);
+    return this.builderModel.create({ ...createBuilderDto, image: fileName });
   }
 
   findAll() {
