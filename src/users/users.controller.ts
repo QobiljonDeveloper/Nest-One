@@ -82,8 +82,7 @@ export class UsersController {
     return this.usersService.remove(+id);
   }
 
-
-    @Roles("ADMIN")
+  @Roles("ADMIN")
   @UseGuards(RolesGuard)
   @UseGuards(JwtAuthGuard)
   @HttpCode(200)
