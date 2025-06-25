@@ -34,10 +34,10 @@ export class CompanyController {
 
   @Delete(":id")
   async deleteCompanyById(@Param("id") id: number): Promise<string> {
-    return this.companyService.deleteCompanyById(id);
+    return this.companyService.deleteCompanyById(+id);
   }
   @Patch(":id")
-  async updateCompanyByID(
+  async updateCompanyById(
     @Body() updateCompanyDto: UpdateCompanyDto,
     @Param("id") id: number
   ) {

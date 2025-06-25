@@ -7,6 +7,5 @@ export const userStub = (): Partial<User> => {
     email: "user@mail.uz",
     password: "1234567689",
     is_active: true,
-
   };
 };
