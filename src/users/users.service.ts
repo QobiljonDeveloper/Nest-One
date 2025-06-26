@@ -30,8 +30,7 @@ export class UsersService {
 
     const newUser = await this.userModel.create(createUserDto);
     console.log(newUser);
-    await newUser.$set("roles", [role.id]); // * UserRole.ccreate(userId,roleId) saqlaydi
-    await newUser.save();
+    // await newUser.$set("roles", [role.id]); // * UserRole.ccreate(userId,roleId) saqlaydi
 
     return newUser;
   }

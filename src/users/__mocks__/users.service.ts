@@ -5,3 +5,4 @@ export const UsersService = jest.fn().mockReturnValue({
   findAll: jest.fn().mockResolvedValue([userStub()]),
   findOne: jest.fn().mockResolvedValue(userStub),
 });
+  

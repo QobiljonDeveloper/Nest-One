@@ -44,7 +44,7 @@ export class AuthService {
     } catch (error) {
       console.log(token);
     }
-    return { token };
+    return token ;
   }
 
   async signin(signinUserDto: SigninUserDto) {
